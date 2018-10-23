@@ -10,7 +10,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "git-branch-is -r \"^(build|ci|docs|feat|fix|perf|refactor|style|test)/\""
     }
   },
   "devDependencies": {
@@ -22,6 +23,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
+    "git-branch-is": "^2.1.0",
     "husky": "^1.1.2",
     "prettier": "1.14.3"
   }
