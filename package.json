@@ -1,0 +1,8 @@
+{
+  "name": "patientaider-web-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:patient-safety-movement-foundation/patientaider-web-app.git",
+  "author": "ewolfe <e@ewolfe.me>",
+  "license": "MIT"
+}
