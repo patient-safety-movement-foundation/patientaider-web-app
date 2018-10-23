@@ -5,6 +5,9 @@
   "repository": "git@github.com:patient-safety-movement-foundation/patientaider-web-app.git",
   "author": "ewolfe <e@ewolfe.me>",
   "license": "MIT",
+  "scripts": {
+    "test": "prettier --list-different **/*.js"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
@@ -14,6 +17,7 @@
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-angular": "^7.1.2",
     "@commitlint/travis-cli": "^7.2.1",
-    "husky": "^1.1.2"
+    "husky": "^1.1.2",
+    "prettier": "1.14.3"
   }
 }
