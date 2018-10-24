@@ -1,5 +1,7 @@
 # patientaider-web-app
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/patient-safety-movement-foundation/patientaider-web-app.svg)](https://greenkeeper.io/)
+
 Source code for patientaider.org
 
 ## Developing
