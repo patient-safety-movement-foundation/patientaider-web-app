@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/layout';
 
@@ -49,12 +49,7 @@ const Index = ({ data }) => (
         <If condition={topic.node.node_locale === 'en-US'}>
           <li key={topic.node.id}>
             <span>
-              <a
-                // href={`/topic?id=${slugify(topic.node.title, { lower: true })}-${
-                href={`/topic/${topic.node.id}`}
-              >
-                {topic.node.title}
-              </a>
+              <Link to={`/topic/${topic.node.id}`}>{topic.node.title}</Link>
               <br />
               <span className="subtitle">{topic.node.subtitle}</span>
             </span>
