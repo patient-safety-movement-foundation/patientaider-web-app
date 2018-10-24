@@ -6,7 +6,7 @@
   "author": "ewolfe <e@ewolfe.me>",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "dev": "gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "prettier --list-different \"**/*.js\" & eslint \"**/*.js\""
