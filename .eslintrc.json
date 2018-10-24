@@ -1,10 +1,21 @@
 {
-  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:jsx-control-statements/recommended"
+  ],
+  "plugins": ["jsx-control-statements"],
   "rules": {
     "react/jsx-filename-extension": [
       1,
       {
         "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/jsx-no-undef": [
+      2,
+      {
+        "allowGlobals": true
       }
     ]
   }
