@@ -11,6 +11,12 @@
     "format": "prettier --write \"src/**/*.js\"",
     "test": "prettier --list-different **/*.js"
   },
+  "greenkeeper": {
+    "prTitles": {
+      "basicPR": "build: update ${dependency} to the latest",
+      "groupPR": "build: update ${dependency} in group ${group} to the latest"
+    }
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
