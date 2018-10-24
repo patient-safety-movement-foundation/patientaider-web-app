@@ -6,6 +6,9 @@
   "author": "ewolfe <e@ewolfe.me>",
   "license": "MIT",
   "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "format": "prettier --write \"src/**/*.js\"",
     "test": "prettier --list-different **/*.js"
   },
   "husky": {
@@ -13,6 +16,19 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "git-branch-is -r \"^(build|ci|docs|feat|fix|perf|refactor|style|test)/\""
     }
+  },
+  "dependencies": {
+    "gatsby": "^2.0.19",
+    "gatsby-image": "^2.0.15",
+    "gatsby-plugin-manifest": "^2.0.5",
+    "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-sharp": "^2.0.7",
+    "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-transformer-sharp": "^2.1.4",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
