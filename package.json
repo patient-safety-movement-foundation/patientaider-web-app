@@ -20,7 +20,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "git-branch-is -r \"^(build|ci|docs|feat|fix|perf|refactor|style|test)/\""
+      "pre-push": "git-branch-is -r \"^master|(build|ci|docs|feat|fix|perf|refactor|style|test)/\""
     }
   },
   "dependencies": {
