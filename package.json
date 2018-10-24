@@ -9,7 +9,7 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "prettier --list-different \"**/*.js\""
+    "test": "prettier --list-different \"**/*.js\" & eslint \"**/*.js\""
   },
   "greenkeeper": {
     "prTitles": {
