@@ -31,7 +31,9 @@ const Header = () => (
       <img src={logo} height="24px" alt="PatientAider" />
     </Link>
     <Icons>
-      <SVG src={info} />
+      <Link to="/info">
+        <SVG src={info} />
+      </Link>
       <SVG src={flag} />
     </Icons>
   </Wrapper>
