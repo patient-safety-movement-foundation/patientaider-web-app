@@ -16,3 +16,5 @@ PatientAider has exclusive, clinically-curated content, to help you better navig
 If you or someone you love is in the hospital or heading to the hospital soon, download PatientAider. It will no doubt come in handy!
 
 PatientAider was designed by Mari Miceli, a registered nurse, and developed by John McConnell. Mari kindly donated PatientAider to the Patient Safety Movement Foundation. The Patient Safety Movement Foundation would like to thank Mari and John for creating a beautifully simple app for patients, their families, and advocates.
+
+[**Give Us Your Feedback**](https://goo.gl/forms/jBd5ikkzDryv7k1A2)
