@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: '/patientaider-web-app',
   siteMetadata: {
     title: 'PatientAider',
   },
