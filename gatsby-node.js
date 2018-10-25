@@ -2,6 +2,8 @@ const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
+  const markdownTemplate = path.resolve(`src/templates/static-page.js`);
+
   return new Promise((resolve, reject) => {
     // The “graphql” function allows us to run arbitrary
     // queries against the local Contentful graphql schema. Think of
@@ -9,6 +11,15 @@ exports.createPages = ({ graphql, actions }) => {
     // from the fetched data that you can run queries against.
     graphql(`
       {
+        allMarkdownRemark(limit: 1000) {
+          edges {
+            node {
+              frontmatter {
+                path
+              }
+            }
+          }
+        }
         allContentfulTopic {
           edges {
             node {
@@ -44,6 +55,17 @@ exports.createPages = ({ graphql, actions }) => {
           component: topicTemplate,
           context: { ...node },
         });
+      });
+
+      // Create static pages
+      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        if (node.frontmatter.path) {
+          createPage({
+            path: node.frontmatter.path,
+            component: markdownTemplate,
+            context: {}, // additional data can be passed via context
+          });
+        }
       });
       resolve();
     });

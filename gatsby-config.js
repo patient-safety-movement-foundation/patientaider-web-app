@@ -13,6 +13,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `xbvvg00rroa3`,
@@ -27,6 +34,7 @@ module.exports = {
         display: 'minimal-ui',
       },
     },
+    'gatsby-transformer-remark',
     'gatsby-plugin-offline',
   ],
 };
