@@ -26,7 +26,6 @@ module.exports = {
         name: 'patientaider',
         start_url: '/',
         display: 'minimal-ui',
-        icon: 'src/images/patientaider.png',
       },
     },
     'gatsby-plugin-offline',
