@@ -12,6 +12,12 @@
     "test": "prettier --list-different \"**/*.js\" & eslint \"**/*.js\""
   },
   "greenkeeper": {
+    "commitMessages": {
+      "dependencyUpdate": "build: update ${dependency} to version ${version}",
+      "devDependencyUpdate": "build: update ${dependency} to version ${version}",
+      "dependencyPin": "build: pin ${dependency} to ${oldVersion}",
+      "devDependencyPin": "build: pin ${dependency} to ${oldVersion}"
+    },
     "prTitles": {
       "basicPR": "build: update ${dependency} to the latest",
       "groupPR": "build: update ${dependency} in group ${group} to the latest"
