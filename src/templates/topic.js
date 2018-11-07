@@ -40,31 +40,45 @@ const Wrapper = styled.div`
   }
 `;
 
-const Index = ({ data }) => (
-  <Layout>
-    <Wrapper>
-      <If condition={data.contentfulTopic.hero}>
-        <img
-          src={data.contentfulTopic.hero.file.url}
-          className="hero"
-          alt={data.contentfulTopic.title}
-        />
-      </If>
-      <div>
-        <h2>{data.contentfulTopic.title}</h2>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: unified()
-              .use(parseToMarkdown, { commonmark: true, footnotes: true })
-              .use(numbered)
-              .use(html)
-              .processSync(data.contentfulTopic.content.content),
-          }}
-        />
-      </div>
-    </Wrapper>
-  </Layout>
-);
+class Index extends React.Component {
+  componentDidMount() {
+    if (
+      window.injectedJavaScript &&
+      typeof window.injectedJavaScript === 'function'
+    ) {
+      window.injectedJavaScript();
+    }
+  }
+
+  render() {
+    const { data } = this.props;
+    return (
+      <Layout>
+        <Wrapper>
+          <If condition={data.contentfulTopic.hero}>
+            <img
+              src={data.contentfulTopic.hero.file.url}
+              className="hero"
+              alt={data.contentfulTopic.title}
+            />
+          </If>
+          <div>
+            <h2>{data.contentfulTopic.title}</h2>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: unified()
+                  .use(parseToMarkdown, { commonmark: true, footnotes: true })
+                  .use(numbered)
+                  .use(html)
+                  .processSync(data.contentfulTopic.content.content),
+              }}
+            />
+          </div>
+        </Wrapper>
+      </Layout>
+    );
+  }
+}
 
 export const query = graphql`
   query($id: String!) {
