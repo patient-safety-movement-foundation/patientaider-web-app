@@ -16,7 +16,8 @@
       "dependencyUpdate": "build: update ${dependency} to version ${version}",
       "devDependencyUpdate": "build: update ${dependency} to version ${version}",
       "dependencyPin": "build: pin ${dependency} to ${oldVersion}",
-      "devDependencyPin": "build: pin ${dependency} to ${oldVersion}"
+      "devDependencyPin": "build: pin ${dependency} to ${oldVersion}",
+      "lockfileUpdate": "build: update lockfile ${lockfilePath}"
     },
     "prTitles": {
       "basicPR": "build: update ${dependency} to the latest",
