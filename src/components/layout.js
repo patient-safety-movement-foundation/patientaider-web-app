@@ -14,6 +14,18 @@ const Main = styled.div`
   padding: 0.5rem;
 `;
 
+const Footer = styled.div`
+  padding: 1rem;
+
+  p {
+    text-align: center;
+    line-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
@@ -105,6 +117,24 @@ const Layout = ({ children }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <Main>{children}</Main>
+        <hr />
+        <Footer>
+          <small>
+            This application was created as a guide to educate and inform a
+            patient and their family and/or friends during a hospital stay. It
+            is informational in nature and is not intended as a substitute for
+            the professional advice of a physician, attorney or other advisor.
+          </small>
+          <br />
+          <p>
+            <small>powered by</small>
+            <img
+              alt="Patient Safety Movement Foundation"
+              style={{ height: '2rem', width: 'auto' }}
+              src="https://patientsafetymovement.org/wp-content/uploads/2017/08/Patient_Safety_Movement_logo_notag.png"
+            />
+          </p>
+        </Footer>
       </>
     )}
   />
