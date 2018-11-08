@@ -56,9 +56,8 @@ const Helper = styled.div`
 `;
 
 const Small = styled.small`
-  color: #ff4c4c;
   display: inline-block;
-  border: 1px solid #ff4c4c;
+  border: 1px solid rgb(0, 87, 184);
   border-radius: 4px;
   padding: 0.5rem;
   opacity: 0.8;
@@ -80,7 +79,7 @@ const Index = () => (
             <h4
               style={{
                 background:
-                  'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), #32CAFA',
+                  'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), rgb(0, 169, 224)',
               }}
             >
               At home, preparing
@@ -93,7 +92,7 @@ const Index = () => (
             <h4
               style={{
                 background:
-                  'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), #FB4C7B',
+                  'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), rgb(108, 194, 74)',
               }}
             >
               In the hospital
@@ -106,7 +105,7 @@ const Index = () => (
             <h4
               style={{
                 background:
-                  'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), #26FDBB',
+                  'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), rgb(0, 37, 84)',
               }}
             >
               At home, recovering

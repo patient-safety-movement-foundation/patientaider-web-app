@@ -98,7 +98,7 @@ const Layout = ({ children }) => (
           <style>
             {`
               a {
-                color: #FF4C4C;
+                color: rgb(0, 87, 184);
               }
             `}
           </style>
