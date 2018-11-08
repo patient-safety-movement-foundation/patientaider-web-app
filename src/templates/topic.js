@@ -38,6 +38,14 @@ const Wrapper = styled.div`
   &:focus {
     background: red;
   }
+
+  .footnotes {
+    font-size: 0.75rem;
+
+    p {
+      display: inline;
+    }
+  }
 `;
 
 class Index extends React.Component {
