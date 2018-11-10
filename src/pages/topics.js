@@ -42,10 +42,23 @@ const Ul = styled.ul`
   }
 `;
 
+function sortAlphabetically(a, b) {
+  const nameA = a.node.title.toLowerCase();
+  const nameB = b.node.title.toLowerCase();
+  if (nameA < nameB)
+    // sort string ascending
+    return -1;
+  if (nameA > nameB) return 1;
+  return 0; // default return value (no sorting)
+}
+
 const Index = ({ data }) => (
   <Layout>
     <Ul>
-      <For each="topic" of={data.allContentfulTopic.edges}>
+      <For
+        each="topic"
+        of={data.allContentfulTopic.edges.sort(sortAlphabetically)}
+      >
         <If condition={topic.node.node_locale === 'en-US'}>
           <li key={topic.node.id}>
             <span>
