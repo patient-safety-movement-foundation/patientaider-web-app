@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   }
 `;
 
-class Index extends React.Component {
+class Topic extends React.Component {
   componentDidMount() {
     if (
       window.injectedJavaScript &&
@@ -106,8 +106,8 @@ export const query = graphql`
   }
 `;
 
-Index.propTypes = {
+Topic.propTypes = {
   data: PropTypes.object.isRequired, // eslint-disable-line
 };
 
-export default Index;
+export default Topic;
