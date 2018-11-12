@@ -1,4 +1,5 @@
 /* eslint-disable react/no-danger */
+import externalLinks from 'remark-external-links';
 import html from 'remark-html';
 import parseToMarkdown from 'remark-parse';
 import PropTypes from 'prop-types';
@@ -77,6 +78,10 @@ class Topic extends React.Component {
                 __html: unified()
                   .use(parseToMarkdown, { commonmark: true, footnotes: true })
                   .use(numbered)
+                  .use(externalLinks, {
+                    target: '_blank',
+                    rel: ['noopener', 'noreferrer'],
+                  })
                   .use(html)
                   .processSync(data.contentfulTopic.content.content),
               }}
