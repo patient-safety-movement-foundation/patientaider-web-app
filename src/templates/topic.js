@@ -51,12 +51,11 @@ const Wrapper = styled.div`
 
 class Topic extends React.Component {
   componentDidMount() {
-    if (
-      window.injectedJavaScript &&
-      typeof window.injectedJavaScript === 'function'
-    ) {
-      window.injectedJavaScript();
-    }
+    window.postMessage(
+      JSON.stringify({
+        componentDidMount: 'Topic',
+      }),
+    );
   }
 
   render() {
