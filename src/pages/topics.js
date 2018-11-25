@@ -55,6 +55,9 @@ function sortAlphabetically(a, b) {
 }
 
 function filterCategories(node) {
+  if (searchParams.get('category') === 'all') {
+    return true;
+  }
   return node.node.categories.includes(searchParams.get('category'));
 }
 
@@ -118,6 +121,7 @@ export const q = graphql`
 
 Index.propTypes = {
   data: PropTypes.object.isRequired, // eslint-disable-line
+  location: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default Index;
