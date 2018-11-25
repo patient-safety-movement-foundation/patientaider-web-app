@@ -5,7 +5,6 @@ import SVG from 'react-inlinesvg';
 
 import logo from '../images/patientaider-logomark.png';
 import info from '../images/icons/info.svg';
-// import flag from '../images/icons/flag.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,7 +33,6 @@ const Header = () => (
       <Link to="/info">
         <SVG src={info} />
       </Link>
-      {/* <SVG src={flag} /> */}
     </Icons>
   </Wrapper>
 );
