@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import qs from 'qs';
 import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
+import { Link, StaticQuery, graphql } from 'gatsby';
 import 'normalize.css';
 
 import Header from './header';
@@ -133,6 +134,29 @@ const Layout = ({ children }) => (
               style={{ height: '2rem', width: 'auto' }}
               src="https://patientsafetymovement.org/wp-content/uploads/2017/08/Patient_Safety_Movement_logo_notag.png"
             />
+          </p>
+          <p>
+            <Link
+              to={`${window.location.pathname}?${qs.stringify({
+                ...qs.parse(window.location.search, {
+                  ignoreQueryPrefix: true,
+                }),
+                lang: 'en',
+              })}`}
+            >
+              <small>English</small>
+            </Link>
+            &nbsp;-&nbsp;
+            <Link
+              to={`${window.location.pathname}?${qs.stringify({
+                ...qs.parse(window.location.search, {
+                  ignoreQueryPrefix: true,
+                }),
+                lang: 'es',
+              })}`}
+            >
+              <small>Spanish</small>
+            </Link>
           </p>
         </Footer>
       </>

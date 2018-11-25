@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import qs from 'qs';
 import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
@@ -42,8 +43,6 @@ const Ul = styled.ul`
   }
 `;
 
-const searchParams = new URLSearchParams(window.location.search);
-
 function sortAlphabetically(a, b) {
   const nameA = a.node.title.toLowerCase();
   const nameB = b.node.title.toLowerCase();
@@ -55,40 +54,63 @@ function sortAlphabetically(a, b) {
 }
 
 function filterCategories(node) {
+  const searchParams = new URLSearchParams(window.location.search);
   if (searchParams.get('category') === 'all') {
     return true;
   }
   return node.node.categories.includes(searchParams.get('category'));
 }
 
-const Index = ({ data }) => (
-  <Layout>
+const languageIds = {
+  en: 'en-US',
+  es: 'es-419',
+};
+
+function filterLanguages(topic) {
+  const searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.has('lang')) {
+    return topic.node.node_locale === languageIds[searchParams.get('lang')];
+  }
+  return true;
+}
+
+const Index = ({ data, location }) => (
+  <Layout location={location}>
     <Ul>
       <For
         each="topic"
         of={data.allContentfulTopic.edges
           .filter(filterCategories)
+          .filter(filterLanguages)
           .sort(sortAlphabetically)}
       >
-        <If condition={topic.node.node_locale === 'en-US'}>
-          <li key={topic.node.id}>
-            <span>
-              <Link to={`/topic/${topic.node.id}`}>{topic.node.title}</Link>
-              <br />
-              <span className="subtitle">{topic.node.subtitle}</span>
-            </span>
-            <If condition={topic.node.icon}>
-              {/* todo: catcherrorboundary */}
-              <SVG
-                src={
-                  data.allFile.edges.find(
-                    el => el.node.name === topic.node.icon,
-                  ).node.publicURL
-                }
-              />
-            </If>
-          </li>
-        </If>
+        <li key={topic.node.id}>
+          <span>
+            <Link
+              to={`/topic/${topic.node.id}${qs.stringify(
+                {
+                  lang: qs.parse(window.location.search, {
+                    ignoreQueryPrefix: true,
+                  }).lang,
+                },
+                { addQueryPrefix: true },
+              )}`}
+            >
+              {topic.node.title}
+            </Link>
+            <br />
+            <span className="subtitle">{topic.node.subtitle}</span>
+          </span>
+          <If condition={topic.node.icon}>
+            {/* todo: catcherrorboundary */}
+            <SVG
+              src={
+                data.allFile.edges.find(el => el.node.name === topic.node.icon)
+                  .node.publicURL
+              }
+            />
+          </If>
+        </li>
       </For>
     </Ul>
   </Layout>

@@ -1,4 +1,5 @@
 import { graphql, Link } from 'gatsby';
+import qs from 'qs';
 import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
@@ -69,13 +70,23 @@ const Small = styled.small`
   }
 `;
 
-const Index = () => (
-  <Layout>
+const Index = props => (
+  <Layout {...props}>
     <h3>Where is the patient?</h3>
     <Helper>
       <ul>
         <li>
-          <Link to="/topics?category=before-the-hospital">
+          <Link
+            to={`/topics${qs.stringify(
+              {
+                category: 'before-the-hospital',
+                lang: qs.parse(window.location.search, {
+                  ignoreQueryPrefix: true,
+                }).lang,
+              },
+              { addQueryPrefix: true },
+            )}`}
+          >
             <h4
               style={{
                 background:
@@ -88,7 +99,17 @@ const Index = () => (
           </Link>
         </li>
         <li>
-          <Link to="/topics?category=in-the-hospital">
+          <Link
+            to={`/topics${qs.stringify(
+              {
+                category: 'in-the-hospital',
+                lang: qs.parse(window.location.search, {
+                  ignoreQueryPrefix: true,
+                }).lang,
+              },
+              { addQueryPrefix: true },
+            )}`}
+          >
             <h4
               style={{
                 background:
@@ -101,7 +122,17 @@ const Index = () => (
           </Link>
         </li>
         <li>
-          <Link to="/topics?category=after-the-hospital">
+          <Link
+            to={`/topics${qs.stringify(
+              {
+                category: 'after-the-hospital',
+                lang: qs.parse(window.location.search, {
+                  ignoreQueryPrefix: true,
+                }).lang,
+              },
+              { addQueryPrefix: true },
+            )}`}
+          >
             <h4
               style={{
                 background:
@@ -116,7 +147,17 @@ const Index = () => (
       </ul>
 
       <Small>
-        <Link to="/topics?category=all">
+        <Link
+          to={`/topics${qs.stringify(
+            {
+              category: 'all',
+              lang: qs.parse(window.location.search, {
+                ignoreQueryPrefix: true,
+              }).lang,
+            },
+            { addQueryPrefix: true },
+          )}`}
+        >
           I don’t know, I’m just browsing...
         </Link>
       </Small>

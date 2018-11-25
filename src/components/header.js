@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import qs from 'qs';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 
@@ -26,11 +27,29 @@ const Icons = styled.div`
 
 const Header = () => (
   <Wrapper>
-    <Link to="/">
+    <Link
+      to={`/${qs.stringify(
+        {
+          lang: qs.parse(window.location.search, {
+            ignoreQueryPrefix: true,
+          }).lang,
+        },
+        { addQueryPrefix: true },
+      )}`}
+    >
       <img src={logo} height="24px" alt="PatientAider" />
     </Link>
     <Icons>
-      <Link to="/info">
+      <Link
+        to={`/info${qs.stringify(
+          {
+            lang: qs.parse(window.location.search, {
+              ignoreQueryPrefix: true,
+            }).lang,
+          },
+          { addQueryPrefix: true },
+        )}`}
+      >
         <SVG src={info} />
       </Link>
     </Icons>
