@@ -46,6 +46,10 @@ const Wrapper = styled.div`
     p {
       display: inline;
     }
+
+    a {
+      word-break: break-all;
+    }
   }
 `;
 
