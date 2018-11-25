@@ -42,6 +42,8 @@ const Ul = styled.ul`
   }
 `;
 
+const searchParams = new URLSearchParams(window.location.search);
+
 function sortAlphabetically(a, b) {
   const nameA = a.node.title.toLowerCase();
   const nameB = b.node.title.toLowerCase();
@@ -52,12 +54,18 @@ function sortAlphabetically(a, b) {
   return 0; // default return value (no sorting)
 }
 
+function filterCategories(node) {
+  return node.node.categories.includes(searchParams.get('category'));
+}
+
 const Index = ({ data }) => (
   <Layout>
     <Ul>
       <For
         each="topic"
-        of={data.allContentfulTopic.edges.sort(sortAlphabetically)}
+        of={data.allContentfulTopic.edges
+          .filter(filterCategories)
+          .sort(sortAlphabetically)}
       >
         <If condition={topic.node.node_locale === 'en-US'}>
           <li key={topic.node.id}>
