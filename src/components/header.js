@@ -1,4 +1,5 @@
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import React from 'react';
 import qs from 'qs';
 import styled from 'styled-components';
@@ -25,12 +26,12 @@ const Icons = styled.div`
   }
 `;
 
-const Header = () => (
+const Header = ({ location }) => (
   <Wrapper>
     <Link
       to={`/${qs.stringify(
         {
-          lang: qs.parse(window.location.search, {
+          lang: qs.parse(location.search, {
             ignoreQueryPrefix: true,
           }).lang,
         },
@@ -43,7 +44,7 @@ const Header = () => (
       <Link
         to={`/info${qs.stringify(
           {
-            lang: qs.parse(window.location.search, {
+            lang: qs.parse(location.search, {
               ignoreQueryPrefix: true,
             }).lang,
           },
@@ -55,5 +56,9 @@ const Header = () => (
     </Icons>
   </Wrapper>
 );
+
+Header.propTypes = {
+  location: PropTypes.object.isRequired, // eslint-disable-line
+};
 
 export default Header;

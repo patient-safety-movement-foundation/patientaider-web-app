@@ -70,8 +70,8 @@ const Small = styled.small`
   }
 `;
 
-const Index = props => (
-  <Layout {...props}>
+const Index = ({ location, ...rest }) => (
+  <Layout location={location} {...rest}>
     <h3>Where is the patient?</h3>
     <Helper>
       <ul>
@@ -80,7 +80,7 @@ const Index = props => (
             to={`/topics${qs.stringify(
               {
                 category: 'before-the-hospital',
-                lang: qs.parse(window.location.search, {
+                lang: qs.parse(location.search, {
                   ignoreQueryPrefix: true,
                 }).lang,
               },
@@ -103,7 +103,7 @@ const Index = props => (
             to={`/topics${qs.stringify(
               {
                 category: 'in-the-hospital',
-                lang: qs.parse(window.location.search, {
+                lang: qs.parse(location.search, {
                   ignoreQueryPrefix: true,
                 }).lang,
               },
@@ -126,7 +126,7 @@ const Index = props => (
             to={`/topics${qs.stringify(
               {
                 category: 'after-the-hospital',
-                lang: qs.parse(window.location.search, {
+                lang: qs.parse(location.search, {
                   ignoreQueryPrefix: true,
                 }).lang,
               },
@@ -151,7 +151,7 @@ const Index = props => (
           to={`/topics${qs.stringify(
             {
               category: 'all',
-              lang: qs.parse(window.location.search, {
+              lang: qs.parse(location.search, {
                 ignoreQueryPrefix: true,
               }).lang,
             },

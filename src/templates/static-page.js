@@ -11,7 +11,11 @@ export default function Template({
   const { markdownRemark } = data; // data.markdownRemark holds our post data
   const { frontmatter, html } = markdownRemark;
   return (
-    <Layout>
+    <Layout
+      location={{
+        pathname: data.markdownRemark.frontmatter.path,
+      }}
+    >
       <div className="blog-post-container">
         <div className="blog-post">
           <h1>{frontmatter.title}</h1>

@@ -43,78 +43,81 @@ const Ul = styled.ul`
   }
 `;
 
-function sortAlphabetically(a, b) {
-  const nameA = a.node.title.toLowerCase();
-  const nameB = b.node.title.toLowerCase();
-  if (nameA < nameB)
-    // sort string ascending
-    return -1;
-  if (nameA > nameB) return 1;
-  return 0; // default return value (no sorting)
-}
+const Index = ({ data, location, ...rest }) => {
+  function sortAlphabetically(a, b) {
+    const nameA = a.node.title.toLowerCase();
+    const nameB = b.node.title.toLowerCase();
+    if (nameA < nameB)
+      // sort string ascending
+      return -1;
+    if (nameA > nameB) return 1;
+    return 0; // default return value (no sorting)
+  }
 
-function filterCategories(node) {
-  const searchParams = new URLSearchParams(window.location.search);
-  if (searchParams.get('category') === 'all') {
+  function filterCategories(node) {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('category') === 'all') {
+      return true;
+    }
+    return node.node.categories.includes(searchParams.get('category'));
+  }
+
+  const languageIds = {
+    en: 'en-US',
+    es: 'es-419',
+  };
+
+  function filterLanguages(topic) {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.has('lang')) {
+      return topic.node.node_locale === languageIds[searchParams.get('lang')];
+    }
     return true;
   }
-  return node.node.categories.includes(searchParams.get('category'));
-}
 
-const languageIds = {
-  en: 'en-US',
-  es: 'es-419',
+  return (
+    <Layout location={location} {...rest}>
+      <Ul>
+        <For
+          each="topic"
+          of={data.allContentfulTopic.edges
+            .filter(filterCategories)
+            .filter(filterLanguages)
+            .sort(sortAlphabetically)}
+        >
+          <li key={topic.node.id}>
+            <span>
+              <Link
+                to={`/topic/${topic.node.id}${qs.stringify(
+                  {
+                    lang: qs.parse(location.search, {
+                      ignoreQueryPrefix: true,
+                    }).lang,
+                  },
+                  { addQueryPrefix: true },
+                )}`}
+              >
+                {topic.node.title}
+              </Link>
+              <br />
+              <span className="subtitle">{topic.node.subtitle}</span>
+            </span>
+            <If condition={topic.node.icon}>
+              {/* todo: catcherrorboundary */}
+              <SVG
+                src={
+                  data.allFile.edges.find(
+                    el => el.node.name === topic.node.icon,
+                  ).node.publicURL
+                }
+              />
+            </If>
+          </li>
+        </For>
+      </Ul>
+    </Layout>
+  );
 };
-
-function filterLanguages(topic) {
-  const searchParams = new URLSearchParams(window.location.search);
-  if (searchParams.has('lang')) {
-    return topic.node.node_locale === languageIds[searchParams.get('lang')];
-  }
-  return true;
-}
-
-const Index = ({ data, location }) => (
-  <Layout location={location}>
-    <Ul>
-      <For
-        each="topic"
-        of={data.allContentfulTopic.edges
-          .filter(filterCategories)
-          .filter(filterLanguages)
-          .sort(sortAlphabetically)}
-      >
-        <li key={topic.node.id}>
-          <span>
-            <Link
-              to={`/topic/${topic.node.id}${qs.stringify(
-                {
-                  lang: qs.parse(window.location.search, {
-                    ignoreQueryPrefix: true,
-                  }).lang,
-                },
-                { addQueryPrefix: true },
-              )}`}
-            >
-              {topic.node.title}
-            </Link>
-            <br />
-            <span className="subtitle">{topic.node.subtitle}</span>
-          </span>
-          <If condition={topic.node.icon}>
-            {/* todo: catcherrorboundary */}
-            <SVG
-              src={
-                data.allFile.edges.find(el => el.node.name === topic.node.icon)
-                  .node.publicURL
-              }
-            />
-          </If>
-        </li>
-      </For>
-    </Ul>
-  </Layout>
-);
 
 export const q = graphql`
   query {

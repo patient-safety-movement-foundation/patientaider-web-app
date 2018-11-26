@@ -55,17 +55,19 @@ const Wrapper = styled.div`
 
 class Topic extends React.Component {
   componentDidMount() {
-    window.postMessage(
-      JSON.stringify({
-        componentDidMount: 'Topic',
-      }),
-    );
+    if (typeof window !== 'undefined') {
+      window.postMessage(
+        JSON.stringify({
+          componentDidMount: 'Topic',
+        }),
+      );
+    }
   }
 
   render() {
-    const { data } = this.props;
+    const { data, location, ...rest } = this.props;
     return (
-      <Layout>
+      <Layout location={location} {...rest}>
         <Wrapper>
           <If condition={data.contentfulTopic.hero}>
             <img
@@ -116,6 +118,7 @@ export const query = graphql`
 
 Topic.propTypes = {
   data: PropTypes.object.isRequired, // eslint-disable-line
+  location: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default Topic;

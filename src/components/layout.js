@@ -27,7 +27,7 @@ const Footer = styled.div`
   }
 `;
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location, ...rest }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -116,7 +116,7 @@ const Layout = ({ children }) => (
             `}
           </style>
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} location={location} />
         <Main>{children}</Main>
         <hr />
         <Footer>
@@ -137,8 +137,8 @@ const Layout = ({ children }) => (
           </p>
           <p>
             <Link
-              to={`${window.location.pathname}?${qs.stringify({
-                ...qs.parse(window.location.search, {
+              to={`${location.pathname}?${qs.stringify({
+                ...qs.parse(location.search, {
                   ignoreQueryPrefix: true,
                 }),
                 lang: 'en',
@@ -148,8 +148,8 @@ const Layout = ({ children }) => (
             </Link>
             &nbsp;-&nbsp;
             <Link
-              to={`${window.location.pathname}?${qs.stringify({
-                ...qs.parse(window.location.search, {
+              to={`${location.pathname}?${qs.stringify({
+                ...qs.parse(location.search, {
                   ignoreQueryPrefix: true,
                 }),
                 lang: 'es',
@@ -166,6 +166,7 @@ const Layout = ({ children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default Layout;
