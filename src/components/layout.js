@@ -27,6 +27,24 @@ const Footer = styled.div`
   }
 `;
 
+function translations(location, path) {
+  const map = {
+    disclaimer: {
+      en:
+        'This application was created as a guide to educate and inform a patient and their family and/or friends during a hospital stay. It is informational in nature and is not intended as a substitute for the professional advice of a physician, attorney or other advisor.',
+      es:
+        'Esta aplicación fue creada como una guía para educar e informar a un paciente y su familia y/o amigos durante una estadía en el hospital. Es de carácter informativo y no pretende ser un sustituto del asesoramiento profesional de un médico, abogado u otro asesor.',
+    },
+  };
+
+  const language =
+    qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    }).lang || 'en';
+
+  return map[path][language];
+}
+
 const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
@@ -120,12 +138,7 @@ const Layout = ({ children, location }) => (
         <Main>{children}</Main>
         <hr />
         <Footer>
-          <small>
-            This application was created as a guide to educate and inform a
-            patient and their family and/or friends during a hospital stay. It
-            is informational in nature and is not intended as a substitute for
-            the professional advice of a physician, attorney or other advisor.
-          </small>
+          <small>{translations(location, 'disclaimer')}</small>
           <br />
           <p>
             <small>powered by</small>
