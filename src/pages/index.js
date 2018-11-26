@@ -70,9 +70,25 @@ const Small = styled.small`
   }
 `;
 
+function translations(location, path) {
+  const map = {
+    title: {
+      en: 'Where is the patient?',
+      es: '¿Dónde está el paciente?',
+    },
+  };
+
+  const language =
+    qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    }).lang || 'en';
+
+  return map[path][language];
+}
+
 const Index = ({ location, ...rest }) => (
   <Layout location={location} {...rest}>
-    <h3>Where is the patient?</h3>
+    <h3>{translations(location, 'title')}</h3>
     <Helper>
       <ul>
         <li>
