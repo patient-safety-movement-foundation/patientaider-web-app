@@ -113,7 +113,7 @@ class Index extends React.Component {
       if (searchParams.has('lang')) {
         return topic.node.node_locale === languageIds[searchParams.get('lang')];
       }
-      return true;
+      return topic.node.node_locale === 'en-US';
     }
 
     function filterTags(topic) {
