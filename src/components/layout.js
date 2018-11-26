@@ -27,7 +27,7 @@ const Footer = styled.div`
   }
 `;
 
-const Layout = ({ children, location, ...rest }) => (
+const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
