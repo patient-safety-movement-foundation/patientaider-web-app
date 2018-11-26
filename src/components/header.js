@@ -7,6 +7,7 @@ import SVG from 'react-inlinesvg';
 
 import logo from '../images/patientaider-logomark.png';
 import info from '../images/icons/info.svg';
+import arrowLeft from '../images/icons/arrow-left.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,36 +27,77 @@ const Icons = styled.div`
   }
 `;
 
-const Header = ({ location }) => (
-  <Wrapper>
-    <Link
-      to={`/${qs.stringify(
-        {
-          lang: qs.parse(location.search, {
-            ignoreQueryPrefix: true,
-          }).lang,
-        },
-        { addQueryPrefix: true },
-      )}`}
-    >
-      <img src={logo} height="24px" alt="PatientAider" />
-    </Link>
-    <Icons>
-      <Link
-        to={`/info${qs.stringify(
-          {
-            lang: qs.parse(location.search, {
-              ignoreQueryPrefix: true,
-            }).lang,
-          },
-          { addQueryPrefix: true },
-        )}`}
-      >
-        <SVG src={info} />
-      </Link>
-    </Icons>
-  </Wrapper>
-);
+const Back = styled.button`
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+`;
+
+class Header extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    this.setHistory();
+  }
+
+  componentDidUpdate() {
+    this.setHistory();
+  }
+
+  setHistory() {
+    if (typeof window !== 'undefined') {
+      this.setState({
+        historyLength: window.history.length,
+      });
+    }
+  }
+
+  render() {
+    const { location } = this.props;
+    const { historyLength } = this.state;
+    return (
+      <Wrapper>
+        <If condition={historyLength > 2 && location.pathname !== '/'}>
+          <Back onClick={() => window.history.back()}>
+            <img src={arrowLeft} alt="back" />
+          </Back>
+        </If>
+        <Link
+          to={`/${qs.stringify(
+            {
+              lang: qs.parse(location.search, {
+                ignoreQueryPrefix: true,
+              }).lang,
+            },
+            { addQueryPrefix: true },
+          )}`}
+        >
+          <img src={logo} height="24px" alt="PatientAider" />
+        </Link>
+        <Icons>
+          <Link
+            to={`/info${qs.stringify(
+              {
+                lang: qs.parse(location.search, {
+                  ignoreQueryPrefix: true,
+                }).lang,
+              },
+              { addQueryPrefix: true },
+            )}`}
+          >
+            <SVG src={info} />
+          </Link>
+        </Icons>
+      </Wrapper>
+    );
+  }
+}
 
 Header.propTypes = {
   location: PropTypes.object.isRequired, // eslint-disable-line
