@@ -76,6 +76,18 @@ function translations(location, path) {
       en: 'Where is the patient?',
       es: '¿Dónde está el paciente?',
     },
+    preparing: {
+      en: 'At home, preparing',
+      es: 'En casa, preparando',
+    },
+    inHospital: {
+      en: 'In the hospital',
+      es: 'En el hospital',
+    },
+    recovering: {
+      en: 'At home, recovering',
+      es: 'En casa, recuperandose',
+    },
   };
 
   const language =
@@ -109,7 +121,7 @@ const Index = ({ location, ...rest }) => (
                   'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), rgb(0, 169, 224)',
               }}
             >
-              At home, preparing
+              {translations(location, 'preparing')}
               <SVG src={livingRoom} />
             </h4>
           </Link>
@@ -132,7 +144,7 @@ const Index = ({ location, ...rest }) => (
                   'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), rgb(108, 194, 74)',
               }}
             >
-              In the hospital
+              {translations(location, 'inHospital')}
               <SVG src={hospitalRoom} />
             </h4>
           </Link>
@@ -155,7 +167,7 @@ const Index = ({ location, ...rest }) => (
                   'linear-gradient(to top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), rgb(0, 37, 84)',
               }}
             >
-              At home, recovering
+              {translations(location, 'recovering')}
               <SVG src={bedroom} />
             </h4>
           </Link>
