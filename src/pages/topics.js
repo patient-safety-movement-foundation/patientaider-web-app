@@ -43,81 +43,172 @@ const Ul = styled.ul`
   }
 `;
 
-const Index = ({ data, location, ...rest }) => {
-  function sortAlphabetically(a, b) {
-    const nameA = a.node.title.toLowerCase();
-    const nameB = b.node.title.toLowerCase();
-    if (nameA < nameB)
-      // sort string ascending
-      return -1;
-    if (nameA > nameB) return 1;
-    return 0; // default return value (no sorting)
+const Filters = styled.div`
+  display: flex;
+  margin-bottom: 1rem;
+
+  label {
+    margin-right: 0.25rem;
+  }
+`;
+
+const Label = styled.label`
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: baseline;
+
+  input {
+    margin-right: 0.5rem;
+  }
+`;
+
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      adult: true,
+      pediatric: true,
+      pregnancy: true,
+    };
+    this.onToggle = this.onToggle.bind(this);
   }
 
-  function filterCategories(node) {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.get('category') === 'all') {
+  onToggle(event) {
+    this.setState({
+      [event.target.name]: event.target.checked,
+    });
+  }
+
+  render() {
+    const { data, location, ...rest } = this.props;
+    const { adult, pregnancy, pediatric } = this.state;
+
+    function sortAlphabetically(a, b) {
+      const nameA = a.node.title.toLowerCase();
+      const nameB = b.node.title.toLowerCase();
+      if (nameA < nameB)
+        // sort string ascending
+        return -1;
+      if (nameA > nameB) return 1;
+      return 0; // default return value (no sorting)
+    }
+
+    function filterCategories(node) {
+      const searchParams = new URLSearchParams(location.search);
+      if (searchParams.get('category') === 'all') {
+        return true;
+      }
+      return node.node.categories.includes(searchParams.get('category'));
+    }
+
+    const languageIds = {
+      en: 'en-US',
+      es: 'es-419',
+    };
+
+    function filterLanguages(topic) {
+      const searchParams = new URLSearchParams(location.search);
+      if (searchParams.has('lang')) {
+        return topic.node.node_locale === languageIds[searchParams.get('lang')];
+      }
       return true;
     }
-    return node.node.categories.includes(searchParams.get('category'));
-  }
 
-  const languageIds = {
-    en: 'en-US',
-    es: 'es-419',
-  };
-
-  function filterLanguages(topic) {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.has('lang')) {
-      return topic.node.node_locale === languageIds[searchParams.get('lang')];
+    function filterTags(topic) {
+      if (topic.node.tags.includes(adult ? 'adult' : undefined)) {
+        return true;
+      }
+      if (topic.node.tags.includes(pediatric ? 'pediatric' : undefined)) {
+        return true;
+      }
+      if (topic.node.tags.includes(pregnancy ? 'pregnancy' : undefined)) {
+        return true;
+      }
+      return false;
     }
-    return true;
-  }
 
-  return (
-    <Layout location={location} {...rest}>
-      <Ul>
-        <For
-          each="topic"
-          of={data.allContentfulTopic.edges
-            .filter(filterCategories)
-            .filter(filterLanguages)
-            .sort(sortAlphabetically)}
-        >
-          <li key={topic.node.id}>
-            <span>
-              <Link
-                to={`/topic/${topic.node.id}${qs.stringify(
-                  {
-                    lang: qs.parse(location.search, {
-                      ignoreQueryPrefix: true,
-                    }).lang,
-                  },
-                  { addQueryPrefix: true },
-                )}`}
-              >
-                {topic.node.title}
-              </Link>
-              <br />
-              <span className="subtitle">{topic.node.subtitle}</span>
-            </span>
-            <If condition={topic.node.icon}>
-              {/* todo: catcherrorboundary */}
-              <SVG
-                src={
-                  data.allFile.edges.find(
-                    el => el.node.name === topic.node.icon,
-                  ).node.publicURL
-                }
-              />
-            </If>
-          </li>
-        </For>
-      </Ul>
-    </Layout>
-  );
-};
+    return (
+      <Layout location={location} {...rest}>
+        <Filters>
+          <Label htmlFor="adult">
+            <input
+              checked={adult}
+              type="checkbox"
+              name="adult"
+              id="adult"
+              value="adult"
+              onChange={this.onToggle}
+            />
+            Adult
+          </Label>
+          <Label htmlFor="pediatric">
+            <input
+              checked={pediatric}
+              type="checkbox"
+              name="pediatric"
+              id="pediatric"
+              value="pediatric"
+              onChange={this.onToggle}
+            />
+            Pediatric
+          </Label>
+          <Label htmlFor="pregnancy">
+            <input
+              checked={pregnancy}
+              type="checkbox"
+              name="pregnancy"
+              id="pregnancy"
+              value="pregnancy"
+              onChange={this.onToggle}
+            />
+            Pregnancy
+          </Label>
+        </Filters>
+        <Ul>
+          <For
+            each="topic"
+            of={data.allContentfulTopic.edges
+              .filter(filterCategories)
+              .filter(filterLanguages)
+              .filter(filterTags)
+              .sort(sortAlphabetically)}
+          >
+            <li key={topic.node.id}>
+              <span>
+                <Link
+                  to={`/topic/${topic.node.id}${qs.stringify(
+                    {
+                      lang: qs.parse(location.search, {
+                        ignoreQueryPrefix: true,
+                      }).lang,
+                    },
+                    { addQueryPrefix: true },
+                  )}`}
+                >
+                  {topic.node.title}
+                </Link>
+                <br />
+                <span className="subtitle">{topic.node.subtitle}</span>
+              </span>
+              <If condition={topic.node.icon}>
+                {/* todo: catcherrorboundary */}
+                <SVG
+                  src={
+                    data.allFile.edges.find(
+                      el => el.node.name === topic.node.icon,
+                    ).node.publicURL
+                  }
+                />
+              </If>
+            </li>
+          </For>
+        </Ul>
+      </Layout>
+    );
+  }
+}
 
 export const q = graphql`
   query {
@@ -138,6 +229,7 @@ export const q = graphql`
           subtitle
           categories
           node_locale
+          tags
         }
       }
     }
