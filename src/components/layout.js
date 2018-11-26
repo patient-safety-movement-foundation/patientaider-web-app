@@ -35,6 +35,10 @@ function translations(location, path) {
       es:
         'Esta aplicación fue creada como una guía para educar e informar a un paciente y su familia y/o amigos durante una estadía en el hospital. Es de carácter informativo y no pretende ser un sustituto del asesoramiento profesional de un médico, abogado u otro asesor.',
     },
+    poweredBy: {
+      en: 'powered by',
+      es: 'energizado por',
+    },
   };
 
   const language =
@@ -141,7 +145,10 @@ const Layout = ({ children, location }) => (
           <small>{translations(location, 'disclaimer')}</small>
           <br />
           <p>
-            <small>powered by</small>
+            <small>
+              {translations(location, 'poweredBy')}
+              &nbsp;
+            </small>
             <img
               alt="Patient Safety Movement Foundation"
               style={{ height: '2rem', width: 'auto' }}
