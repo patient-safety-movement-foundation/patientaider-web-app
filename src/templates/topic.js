@@ -59,6 +59,7 @@ class Topic extends React.Component {
       JSON.stringify({
         componentDidMount: 'Topic',
       }),
+      '*',
     );
   }
 
