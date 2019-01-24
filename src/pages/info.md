@@ -1,7 +1,7 @@
 ---
 path: '/info'
 title: 'Info'
-es: "PatientAider™ puede ser una valiosa fuente de información médica para usted o la estadía en el hospital de su ser querido. La aplicación está diseñada para eliminar la confusa jerga médica para brindarle explicaciones simples en inglés de los términos comunes, los protocolos y los riesgos que puede encontrar y que debe vigilar como paciente o defensor en el hospital.<br/><br/>
+es: "PatientAider® puede ser una valiosa fuente de información médica para usted o la estadía en el hospital de su ser querido. La aplicación está diseñada para eliminar la confusa jerga médica para brindarle explicaciones simples en inglés de los términos comunes, los protocolos y los riesgos que puede encontrar y que debe vigilar como paciente o defensor en el hospital.<br/><br/>
 
 PatientAider tiene contenido exclusivo, clínicamente curado, para ayudarlo a navegar mejor su atención. Las características incluyen:<br/><br/>
 
@@ -16,7 +16,7 @@ Si usted o alguien que ama están en el hospital o se dirigen al hospital pronto
 PatientAider fue diseñada por Mari Miceli, una enfermera registrada, y desarrollada por John McConnell. Mari amablemente donó PatientAider a la Fundación para el Movimiento de Seguridad del Paciente. La Fundación para el Movimiento para la Seguridad del Paciente desea agradecer a Mari y John por crear una aplicación bella y simple para los pacientes, sus familias y defensores.<br/><br/>
 
 [**Danos tu opinion**](https://goo.gl/forms/jBd5ikkzDryv7k1A2)"
-en: "PatientAider™ can be a valuable source of medical information for you or your loved one’s hospital stay. The app is designed to cut through confusing medical jargon to give you plain-English explanations of common terms, protocols and risks that you may encounter and should be watchful of as a patient or advocate in the hospital.<br/><br/>
+en: "PatientAider® can be a valuable source of medical information for you or your loved one’s hospital stay. The app is designed to cut through confusing medical jargon to give you plain-English explanations of common terms, protocols and risks that you may encounter and should be watchful of as a patient or advocate in the hospital.<br/><br/>
 
 PatientAider has exclusive, clinically-curated content, to help you better navigate your care. Features include:<br/><br/>
 
