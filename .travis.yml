@@ -3,7 +3,6 @@ branches:
   except:
     - gh-pages
 script:
-  - commitlint-travis
   - yarn test
   - yarn build
 before_install:
