@@ -34,10 +34,13 @@ function translations(location, path) {
         'This application was created as a guide to educate and inform a patient and their family and/or friends during a hospital stay. It is informational in nature and is not intended as a substitute for the professional advice of a physician, attorney or other advisor.',
       es:
         'Esta aplicación fue creada como una guía para educar e informar a un paciente y su familia y/o amigos durante una estadía en el hospital. Es de carácter informativo y no pretende ser un sustituto del asesoramiento profesional de un médico, abogado u otro asesor.',
+      // eslint-disable-next-line prettier/prettier
+      zh: '本應用程式的設計宗旨，是作為住院期間可教育病人及其家人和/或朋友，或為其提供資訊之指南。其內容屬於參考性質，無法取代醫師、律師或其他顧問提供的專業意見。',
     },
     poweredBy: {
       en: 'powered by',
       es: 'energizado por',
+      zh: '技術支援',
     },
   };
 
@@ -189,6 +192,17 @@ const Layout = ({ children, location }) => (
               })}`}
             >
               <small>Spanish</small>
+            </Link>
+            &nbsp;-&nbsp;
+            <Link
+              to={`${location.pathname}?${qs.stringify({
+                ...qs.parse(location.search, {
+                  ignoreQueryPrefix: true,
+                }),
+                lang: 'zh',
+              })}`}
+            >
+              <small>Chinese - Traditional</small>
             </Link>
           </p>
         </Footer>
