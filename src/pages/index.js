@@ -75,18 +75,22 @@ function translations(location, path) {
     title: {
       en: 'Where is the patient?',
       es: '¿Dónde está el paciente?',
+      zh: '病人在哪裡？',
     },
     preparing: {
       en: 'At home, preparing',
       es: 'En casa, preparando',
+      zh: '在家裡，準備中',
     },
     inHospital: {
       en: 'In the hospital',
       es: 'En el hospital',
+      zh: '在醫院',
     },
     recovering: {
       en: 'At home, recovering',
       es: 'En casa, recuperandose',
+      zh: '在家裡，恢復中',
     },
   };
 

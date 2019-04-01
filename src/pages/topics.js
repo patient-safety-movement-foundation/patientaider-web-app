@@ -106,6 +106,7 @@ class Index extends React.Component {
     const languageIds = {
       en: 'en-US',
       es: 'es-419',
+      zh: 'zh-Hant-TW',
     };
 
     function filterLanguages(topic) {

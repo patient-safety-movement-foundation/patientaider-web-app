@@ -70,6 +70,7 @@ export const pageQuery = graphql`
         title
         en
         es
+        zh
       }
     }
   }
