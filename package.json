@@ -26,7 +26,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "yarn test & git-branch-is -r \"^master|(build|ci|docs|feat|fix|perf|refactor|style|test)/\""
     }
   },
@@ -60,9 +59,6 @@
     "unified": "^7.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.2.1",
-    "@commitlint/config-angular": "^7.1.2",
-    "@commitlint/travis-cli": "^7.2.1",
     "babel-plugin-jsx-control-statements": "^4.0.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
