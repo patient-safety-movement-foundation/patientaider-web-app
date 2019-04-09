@@ -31,17 +31,17 @@ If you or someone you love is in the hospital or heading to the hospital soon, d
 PatientAider was designed by Mari Miceli, a registered nurse, and developed by John McConnell. Mari kindly donated PatientAider to the Patient Safety Movement Foundation. The Patient Safety Movement Foundation would like to thank Mari and John for creating a beautifully simple app for patients, their families, and advocates.<br/><br/>
 
 [**Give Us Your Feedback**](https://goo.gl/forms/jBd5ikkzDryv7k1A2)"
-zh: "對於您或您親人的住院過程來說，PatientAider® 可以是很有用處的醫療資訊來源。這
+zh: "對於您或您親人的住院過程來說，美式智慧就醫幫手® 可以是很有用處的醫療資訊來源。這
 一款 App 經過設計捨棄了令人困惑的醫學術語，改以平易近人的中文解釋，為您說明
 您身為病人或醫院病人代表可能遭遇且應注意的常見詞彙、作業流程及風險。<br/><br/>
-PatientAider 提供由臨床人員策劃的獨家內容，可使您的照護更加順利。特色包括：<br/><br/>
+美式智慧就醫幫手 提供由臨床人員策劃的獨家內容，可使您的照護更加順利。特色包括：<br/><br/>
 – 與您的護理師和醫師溝通的策略 – 醫院內常見醫療失誤的相關資訊<br/>
 – 臨床專家提供有助益的影片<br/>
 – 提供可深入了解各主題的連結網站<br/>
 – 舒壓技巧<br/><br/>
-如果您或您的親人已經或即將住院，請下載 PatientAider。它絕對能派上用場！<br/><br/>
-PatientAider 係由一名註冊護理師 Mari Miceli 設計，並由 John McConnell 開發。Mari 
-已將 PatientAider 無私捐贈予美國病人安全運動基金會 Patient Safety Movement 
+如果您或您的親人已經或即將住院，請下載 美式智慧就醫幫手。它絕對能派上用場！<br/><br/>
+美式智慧就醫幫手 係由一名註冊護理師 Mari Miceli 設計，並由 John McConnell 開發。Mari 
+已將 美式智慧就醫幫手 無私捐贈予美國病人安全運動基金會 Patient Safety Movement 
 Foundation。Patient Safety Movement Foundation 誠摯感謝 Mari 與 John 為病人、其
 家人與病人代表們，建立如此好上手又精巧的 App。<br/><br/>
 [**請給我們您的回饋意見**](https://goo.gl/forms/jBd5ikkzDryv7k1A2)<br/>
