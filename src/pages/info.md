@@ -45,4 +45,6 @@ PatientAider 係由一名註冊護理師 Mari Miceli 設計，並由 John McConn
 Foundation。Patient Safety Movement Foundation 誠摯感謝 Mari 與 John 為病人、其
 家人與病人代表們，建立如此好上手又精巧的 App。<br/><br/>
 [**請給我們您的回饋意見**](https://goo.gl/forms/jBd5ikkzDryv7k1A2)"
+
+繁體中文翻譯由慷慨的捐贈者Dr. Chan Liao 以及台灣患者安全文化社團提供。
 ---
