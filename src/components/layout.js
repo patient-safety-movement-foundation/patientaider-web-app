@@ -35,7 +35,8 @@ function translations(location, path) {
       es:
         'Esta aplicación fue creada como una guía para educar e informar a un paciente y su familia y/o amigos durante una estadía en el hospital. Es de carácter informativo y no pretende ser un sustituto del asesoramiento profesional de un médico, abogado u otro asesor.',
       // eslint-disable-next-line prettier/prettier
-      zh: '本應用程式的設計宗旨，是作為住院期間可教育病人及其家人和/或朋友，或為其提供資訊之指南。其內容屬於參考性質，無法取代醫師、律師或其他顧問提供的專業意見。',
+      zh:
+        '本應用程式的設計宗旨，是作為住院期間可教育病人及其家人和/或朋友，或為其提供資訊之指南。其內容屬於參考性質，無法取代醫師、律師或其他顧問提供的專業意見。',
     },
     poweredBy: {
       en: 'powered by',
