@@ -92,6 +92,11 @@ function translations(location, path) {
       es: 'En casa, recuperandose',
       zh: '在家裡，恢復中',
     },
+    justBrowsing: {
+      en: 'I don’t know, I’m just browsing…',
+      es: 'No se, solo estoy navegando…',
+      zh: '不知道，只是瀏覽一下',
+    },
   };
 
   const language =
@@ -190,7 +195,7 @@ const Index = ({ location, ...rest }) => (
             { addQueryPrefix: true },
           )}`}
         >
-          I don’t know, I’m just browsing...
+          {translations(location, 'justBrowsing')}
         </Link>
       </Small>
       <br />
