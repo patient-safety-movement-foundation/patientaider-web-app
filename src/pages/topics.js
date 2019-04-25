@@ -7,6 +7,8 @@ import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/layout';
 
+import translations from '../lib/translations';
+
 const Ul = styled.ul`
   list-style-type: none;
   margin: 0;
@@ -142,7 +144,7 @@ class Index extends React.Component {
               value="adult"
               onChange={this.onToggle}
             />
-            Adult
+            {translations(location, 'tags.adult')}
           </Label>
           <Label htmlFor="pediatric">
             <input
@@ -153,7 +155,7 @@ class Index extends React.Component {
               value="pediatric"
               onChange={this.onToggle}
             />
-            Pediatric
+            {translations(location, 'tags.pediatric')}
           </Label>
           <Label htmlFor="pregnancy">
             <input
@@ -164,7 +166,7 @@ class Index extends React.Component {
               value="pregnancy"
               onChange={this.onToggle}
             />
-            Pregnancy
+            {translations(location, 'tags.pregnancy')}
           </Label>
         </Filters>
         <Ul>
