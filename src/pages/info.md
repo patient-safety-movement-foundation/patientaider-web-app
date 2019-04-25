@@ -44,6 +44,6 @@ zh: "對於您或您親人的住院過程來說，美式智慧就醫幫手® 可
 已將 美式智慧就醫幫手 無私捐贈予美國病人安全運動基金會 Patient Safety Movement 
 Foundation。Patient Safety Movement Foundation 誠摯感謝 Mari 與 John 為病人、其
 家人與病人代表們，建立如此好上手又精巧的 App。<br/><br/>
-繁體中文翻譯由慷慨的捐贈者Dr. Chan Liao 以及台灣患者安全文化社團提供。<br/><br/>
+繁體中文翻譯由慷慨的捐贈者Dr. Chan Liao Mingi以及台灣病人安全推廣同好會提供。<br/><br/>
 [**請給我們您的回饋意見**](https://goo.gl/forms/jBd5ikkzDryv7k1A2)<br/>"
 ---
