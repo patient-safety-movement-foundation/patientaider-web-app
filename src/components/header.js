@@ -40,6 +40,7 @@ const Back = styled.button`
 function logo(language) {
   const logoMap = {
     en: logoEnglish,
+    es: logoEnglish,
     zh: logoChinese,
   };
 
