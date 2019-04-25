@@ -74,7 +74,7 @@ const Small = styled.small`
 
 const Index = ({ location, ...rest }) => (
   <Layout location={location} {...rest}>
-  <h3>{translations(location, 'title')}</h3>
+    <h3>{translations(location, 'title')}</h3>
     <Helper>
       <ul>
         <li>
