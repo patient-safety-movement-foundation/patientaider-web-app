@@ -95,7 +95,12 @@ class Header extends React.PureComponent {
             { addQueryPrefix: true },
           )}`}
         >
-          <img src={logo(language)} height="24px" alt="PatientAider" />
+          <img
+            key={language}
+            src={logo(language)}
+            height="24px"
+            alt="PatientAider"
+          />
         </Link>
         <Icons>
           <Link
