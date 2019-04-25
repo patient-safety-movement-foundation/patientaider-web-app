@@ -27,6 +27,21 @@ export default function translations(location, path) {
       es: 'No se, solo estoy navegando…',
       zh: '不知道，只是瀏覽一下',
     },
+    'tags.adult': {
+      en: 'Adult',
+      es: 'Adulto',
+      zh: '成人',
+    },
+    'tags.pediatric': {
+      en: 'Pediatric',
+      es: 'Pediátrico',
+      zh: '兒科',
+    },
+    'tags.pregnancy': {
+      en: 'Pregnancy',
+      es: 'Embarazo',
+      zh: '懷孕',
+    },
   };
 
   const language =
