@@ -5,7 +5,8 @@ import qs from 'qs';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 
-import logo from '../images/patientaider-logomark.png';
+import logoEnglish from '../images/patientaider-logomark.png';
+import logoChinese from '../images/patientaider-logomark-zh.png';
 import info from '../images/icons/info.svg';
 import arrowLeft from '../images/icons/arrow-left.svg';
 
@@ -36,6 +37,15 @@ const Back = styled.button`
   outline: none;
 `;
 
+function logo(language) {
+  const logoMap = {
+    en: logoEnglish,
+    zh: logoChinese,
+  };
+
+  return logoMap[language];
+}
+
 class Header extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -61,6 +71,12 @@ class Header extends React.PureComponent {
   render() {
     const { location } = this.props;
     const { historyLength } = this.state;
+
+    const language =
+      qs.parse(location.search, {
+        ignoreQueryPrefix: true,
+      }).lang || 'en';
+
     return (
       <Wrapper>
         <If condition={historyLength > 2 && location.pathname !== '/'}>
@@ -78,7 +94,7 @@ class Header extends React.PureComponent {
             { addQueryPrefix: true },
           )}`}
         >
-          <img src={logo} height="24px" alt="PatientAider" />
+          <img src={logo(language)} height="24px" alt="PatientAider" />
         </Link>
         <Icons>
           <Link
