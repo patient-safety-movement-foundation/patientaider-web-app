@@ -41,6 +41,5 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
-    'gatsby-plugin-offline',
   ],
 };
