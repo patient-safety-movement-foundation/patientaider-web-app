@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import qs from 'qs';
 import styled from 'styled-components';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
+import Languages from './languages';
 import 'normalize.css';
 
 import Header from './header';
@@ -53,7 +54,7 @@ function translations(location, path) {
   return map[path][language];
 }
 
-const Layout = ({ children, location }) => (
+const Layout = ({ children, location, showLanguages }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -172,49 +173,25 @@ const Layout = ({ children, location }) => (
               />
             </a>
           </p>
-          <p>
-            <Link
-              to={`${location.pathname}?${qs.stringify({
-                ...qs.parse(location.search, {
-                  ignoreQueryPrefix: true,
-                }),
-                lang: 'en',
-              })}`}
-            >
-              <small>English</small>
-            </Link>
-            &nbsp;-&nbsp;
-            <Link
-              to={`${location.pathname}?${qs.stringify({
-                ...qs.parse(location.search, {
-                  ignoreQueryPrefix: true,
-                }),
-                lang: 'es',
-              })}`}
-            >
-              <small>Spanish</small>
-            </Link>
-            &nbsp;-&nbsp;
-            <Link
-              to={`${location.pathname}?${qs.stringify({
-                ...qs.parse(location.search, {
-                  ignoreQueryPrefix: true,
-                }),
-                lang: 'zh',
-              })}`}
-            >
-              <small>Chinese - Traditional</small>
-            </Link>
-          </p>
+          {showLanguages && (
+            <p>
+              <Languages location={location} />
+            </p>
+          )}
         </Footer>
       </>
     )}
   />
 );
 
+Layout.defaultProps = {
+  showLanguages: true,
+};
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired, // eslint-disable-line
+  showLanguages: PropTypes.bool,
 };
 
 export default Layout;

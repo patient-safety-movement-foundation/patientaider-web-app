@@ -66,7 +66,7 @@ class Topic extends React.Component {
   render() {
     const { data, location, ...rest } = this.props;
     return (
-      <Layout location={location} {...rest}>
+      <Layout location={location} {...rest} showLanguages={false}>
         <Wrapper>
           <If condition={data.contentfulTopic.hero}>
             <img
@@ -80,7 +80,10 @@ class Topic extends React.Component {
             <div
               dangerouslySetInnerHTML={{
                 __html: unified()
-                  .use(parseToMarkdown, { commonmark: true, footnotes: true })
+                  .use(parseToMarkdown, {
+                    commonmark: true,
+                    footnotes: true,
+                  })
                   .use(numbered)
                   .use(externalLinks, {
                     target: '_blank',
