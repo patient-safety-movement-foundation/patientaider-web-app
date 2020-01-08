@@ -3,6 +3,7 @@ import qs from 'qs';
 import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
+import PropTypes from 'prop-types';
 
 import Layout from '../components/layout';
 import livingRoom from '../images/illustrations/living-room.svg';
@@ -171,7 +172,7 @@ const Index = ({ location, ...rest }) => (
 );
 
 Index.propTypes = {
-  location: propTypes.object.required, // eslint-disable-line
+  location: PropTypes.object.required, // eslint-disable-line
 };
 
 export const data = graphql`
