@@ -170,6 +170,10 @@ const Index = ({ location, ...rest }) => (
   </Layout>
 );
 
+Index.propTypes = {
+  location: propTypes.object.required, // eslint-disable-line
+};
+
 export const data = graphql`
   query {
     contentfulTopic {
