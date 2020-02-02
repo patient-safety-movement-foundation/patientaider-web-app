@@ -38,6 +38,17 @@ export default function Languages({ location }) {
       >
         <small>Chinese - Traditional</small>
       </Link>
+      {' - '}
+      <Link
+        to={`${location.pathname}?${qs.stringify({
+          ...qs.parse(location.search, {
+            ignoreQueryPrefix: true,
+          }),
+          lang: 'ar',
+        })}`}
+      >
+        <small>Arabic</small>
+      </Link>
     </div>
   );
 }
