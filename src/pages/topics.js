@@ -109,6 +109,7 @@ class Index extends React.Component {
       en: 'en-US',
       es: 'es-419',
       zh: 'zh-Hant-TW',
+      ar: 'ar-SA',
     };
 
     function filterLanguages(topic) {

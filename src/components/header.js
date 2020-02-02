@@ -42,6 +42,7 @@ function logo(language) {
     en: logoEnglish,
     es: logoEnglish,
     zh: logoChinese,
+    ar: logoEnglish,
   };
 
   return logoMap[language];
