@@ -57,23 +57,29 @@ function translations(location, path) {
   return map[path][language];
 }
 
-const Layout = ({ children, location, showLanguages }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+const Layout = ({ children, location, showLanguages }) => {
+  const language =
+    qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    }).lang || 'en';
+
+  return (
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
           }
         }
-      }
-    `}
-    render={data => (
-      <>
-        <Helmet title={data.site.siteMetadata.title}>
-          <html lang="en" />
-          <script>
-            {`
+      `}
+      render={data => (
+        <>
+          <Helmet title={data.site.siteMetadata.title}>
+            <html lang={language} />
+            <script>
+              {`
             (function(w, d){
               var id='embedly-platform', n = 'script';
               if (!d.getElementById(id)){
@@ -85,13 +91,13 @@ const Layout = ({ children, location, showLanguages }) => (
               }
             })(window, document);
             `}
-          </script>
-          <link
-            href="https://fonts.googleapis.com/css?family=Rubik"
-            rel="stylesheet"
-          />
-          <style>
-            {`
+            </script>
+            <link
+              href="https://fonts.googleapis.com/css?family=Rubik"
+              rel="stylesheet"
+            />
+            <style>
+              {`
 
             * {
               box-sizing: border-box;
@@ -136,56 +142,62 @@ const Layout = ({ children, location, showLanguages }) => (
             small {font-size: 0.833rem;}
             sup {font-size: 0.578rem;}
             `}
-          </style>
+            </style>
 
-          <style>
-            {`
+            <style>
+              {`
               a {
                 color: rgb(0, 87, 184);
               }
             `}
-          </style>
-        </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} location={location} />
-        <Main>{children}</Main>
-        <hr />
-        <Footer>
-          <small>{translations(location, 'disclaimer')}</small>
-          <br />
-          <p>
-            <small>
-              {translations(location, 'poweredBy')}
-              &nbsp;
-            </small>
-            <img
-              alt="Patient Safety Movement Foundation"
-              style={{ height: '2rem', width: 'auto' }}
-              src="https://patientsafetymovement.org/wp-content/uploads/2017/08/Patient_Safety_Movement_logo_notag.png"
+            </style>
+          </Helmet>
+          <body dir={language === 'ar' ? 'rtl' : 'ltr'}>
+            <Header
+              siteTitle={data.site.siteMetadata.title}
+              location={location}
             />
-          </p>
-          <p>
-            <a
-              href="https://www.contentful.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <img
-                src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
-                style={{ maxWidth: '100px', width: '100%' }}
-                alt="Powered by Contentful"
-              />
-            </a>
-          </p>
-          {showLanguages && (
-            <p>
-              <Languages location={location} />
-            </p>
-          )}
-        </Footer>
-      </>
-    )}
-  />
-);
+            <Main>{children}</Main>
+            <hr />
+            <Footer>
+              <small>{translations(location, 'disclaimer')}</small>
+              <br />
+              <p>
+                <small>
+                  {translations(location, 'poweredBy')}
+                  &nbsp;
+                </small>
+                <img
+                  alt="Patient Safety Movement Foundation"
+                  style={{ height: '2rem', width: 'auto' }}
+                  src="https://patientsafetymovement.org/wp-content/uploads/2017/08/Patient_Safety_Movement_logo_notag.png"
+                />
+              </p>
+              <p>
+                <a
+                  href="https://www.contentful.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <img
+                    src="https://images.ctfassets.net/fo9twyrwpveg/44baP9Gtm8qE2Umm8CQwQk/c43325463d1cb5db2ef97fca0788ea55/PoweredByContentful_LightBackground.svg"
+                    style={{ maxWidth: '100px', width: '100%' }}
+                    alt="Powered by Contentful"
+                  />
+                </a>
+              </p>
+              {showLanguages && (
+                <p>
+                  <Languages location={location} />
+                </p>
+              )}
+            </Footer>
+          </body>
+        </>
+      )}
+    />
+  );
+};
 
 Layout.defaultProps = {
   showLanguages: true,
