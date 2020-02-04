@@ -58,7 +58,6 @@ function translations(location, path) {
 }
 
 const Layout = ({ children, location, showLanguages }) => {
-  console.log(location);
   const language =
     qs.parse(location.search, {
       ignoreQueryPrefix: true,
