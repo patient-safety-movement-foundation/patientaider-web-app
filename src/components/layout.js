@@ -45,7 +45,7 @@ function translations(location, path) {
       en: 'powered by',
       es: 'energizado por',
       zh: '技術支援',
-      ar: 'مترجم باللغة',
+      ar: 'مدعوم من',
     },
   };
 
@@ -58,6 +58,7 @@ function translations(location, path) {
 }
 
 const Layout = ({ children, location, showLanguages }) => {
+  console.log(location);
   const language =
     qs.parse(location.search, {
       ignoreQueryPrefix: true,
@@ -77,7 +78,7 @@ const Layout = ({ children, location, showLanguages }) => {
       render={data => (
         <>
           <Helmet title={data.site.siteMetadata.title}>
-            <html lang={language} />
+            <html lang={language} dir={language === 'ar' ? 'rtl' : 'ltr'} />
             <script>
               {`
             (function(w, d){
@@ -169,7 +170,7 @@ const Layout = ({ children, location, showLanguages }) => {
                 </small>
                 <img
                   alt="Patient Safety Movement Foundation"
-                  style={{ height: '2rem', width: 'auto' }}
+                  style={{ height: '2rem', width: 'auto', margin: '0 5px' }}
                   src="https://patientsafetymovement.org/wp-content/uploads/2017/08/Patient_Safety_Movement_logo_notag.png"
                 />
               </p>
