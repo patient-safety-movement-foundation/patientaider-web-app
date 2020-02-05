@@ -30,7 +30,7 @@ export default function translations(location, path) {
       en: 'I don’t know, I’m just browsing…',
       es: 'No se, solo estoy navegando…',
       zh: '不知道，只是瀏覽一下',
-      ar: '…لا أعرف ، أنا فقط أتصفح',
+      ar: 'لا أعرف، أنا فقط أتصفح...',
     },
     'tags.adult': {
       en: 'Adult',

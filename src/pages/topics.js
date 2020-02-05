@@ -87,6 +87,11 @@ class Index extends React.Component {
     const { data, location, ...rest } = this.props;
     const { adult, pregnancy, pediatric } = this.state;
 
+    const language =
+      qs.parse(location.search, {
+        ignoreQueryPrefix: true,
+      }).lang || 'en';
+
     function sortAlphabetically(a, b) {
       const nameA = a.node.title.toLowerCase();
       const nameB = b.node.title.toLowerCase();
@@ -143,6 +148,11 @@ class Index extends React.Component {
               name="adult"
               id="adult"
               value="adult"
+              style={
+                language === 'ar'
+                  ? { marginLeft: '0.5rem', marginRight: '0' }
+                  : {}
+              }
               onChange={this.onToggle}
             />
             {translations(location, 'tags.adult')}
@@ -154,6 +164,11 @@ class Index extends React.Component {
               name="pediatric"
               id="pediatric"
               value="pediatric"
+              style={
+                language === 'ar'
+                  ? { marginLeft: '0.5rem', marginRight: '0' }
+                  : {}
+              }
               onChange={this.onToggle}
             />
             {translations(location, 'tags.pediatric')}
@@ -165,6 +180,11 @@ class Index extends React.Component {
               name="pregnancy"
               id="pregnancy"
               value="pregnancy"
+              style={
+                language === 'ar'
+                  ? { marginLeft: '0.5rem', marginRight: '0' }
+                  : {}
+              }
               onChange={this.onToggle}
             />
             {translations(location, 'tags.pregnancy')}

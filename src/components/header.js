@@ -6,9 +6,11 @@ import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 
 import logoEnglish from '../images/patientaider-logomark.png';
+import logoArabic from '../images/patientaider-logomark-ar.png';
 import logoChinese from '../images/patientaider-logomark-zh.png';
 import info from '../images/icons/info.svg';
 import arrowLeft from '../images/icons/arrow-left.svg';
+import arrowRight from '../images/icons/arrow-right.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +44,7 @@ function logo(language) {
     en: logoEnglish,
     es: logoEnglish,
     zh: logoChinese,
-    ar: logoEnglish,
+    ar: logoArabic,
   };
 
   return logoMap[language];
@@ -83,7 +85,7 @@ class Header extends React.PureComponent {
       <Wrapper>
         <If condition={historyLength > 2 && location.pathname !== '/'}>
           <Back onClick={() => window.history.back()}>
-            <img src={arrowLeft} alt="back" />
+            <img src={language === 'ar' ? arrowRight : arrowLeft} alt="back" />
           </Back>
         </If>
         <Link
