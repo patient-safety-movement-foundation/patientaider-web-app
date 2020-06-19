@@ -66,6 +66,15 @@ const Label = styled.label`
   }
 `;
 
+const emptySvg = btoa('<svg height="0" width="0"></svg>');
+function findPublicUrl(data, topic) {
+  const icon = data.allFile.edges.find(el => el.node.name === topic.node.icon);
+  if (icon) {
+    return icon.node.publicURL;
+  }
+  return emptySvg;
+}
+
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -217,14 +226,7 @@ class Index extends React.Component {
                 <span className="subtitle">{topic.node.subtitle}</span>
               </span>
               <If condition={topic.node.icon}>
-                {/* todo: catcherrorboundary */}
-                <SVG
-                  src={
-                    data.allFile.edges.find(
-                      el => el.node.name === topic.node.icon,
-                    ).node.publicURL
-                  }
-                />
+                <SVG src={findPublicUrl(data, topic)} />
               </If>
             </li>
           </For>
