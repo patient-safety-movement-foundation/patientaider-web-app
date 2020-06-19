@@ -66,7 +66,8 @@ const Label = styled.label`
   }
 `;
 
-const emptySvg = btoa('<svg height="0" width="0"></svg>');
+const emptySvg = 'PHN2ZyBoZWlnaHQ9IjAiIHdpZHRoPSIwIj48L3N2Zz4='; // window.btoa('<svg height="0" width="0"></svg>');
+
 function findPublicUrl(data, topic) {
   const icon = data.allFile.edges.find(el => el.node.name === topic.node.icon);
   if (icon) {
