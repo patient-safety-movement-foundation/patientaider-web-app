@@ -60,9 +60,9 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             ...node,
             test: 'test',
-            translations: result.data.allContentfulTopic.edges.filter(topic => {
-              return topic.node.contentful_id === node.contentful_id;
-            }),
+            translations: result.data.allContentfulTopic.edges.filter(
+              topic => topic.node.contentful_id === node.contentful_id,
+            ),
           },
         });
       });

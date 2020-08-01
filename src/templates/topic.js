@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-danger */
 import externalLinks from 'remark-external-links';
 import html from 'remark-html';
