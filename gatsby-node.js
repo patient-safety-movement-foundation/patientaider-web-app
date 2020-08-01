@@ -1,4 +1,6 @@
 const path = require('path');
+const slug = require('slug');
+const languageCode = require('./src/lib/language-codes');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -29,6 +31,8 @@ exports.createPages = ({ graphql, actions }) => {
               subtitle
               categories
               node_locale
+              slug
+              contentful_id
             }
           }
         }
@@ -51,9 +55,15 @@ exports.createPages = ({ graphql, actions }) => {
           // as a template component. The `context` is
           // optional but is often necessary so the template
           // can query data specific to each page.
-          path: `/topic/${node.id}/`,
+          path: `${languageCode[node.node_locale]}/topic/${slug(node.slug)}`,
           component: topicTemplate,
-          context: { ...node },
+          context: {
+            ...node,
+            test: 'test',
+            translations: result.data.allContentfulTopic.edges.filter(topic => {
+              return topic.node.contentful_id === node.contentful_id;
+            }),
+          },
         });
       });
 

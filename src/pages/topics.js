@@ -8,6 +8,9 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 
 import translations from '../lib/translations';
+import languageCodes from '../lib/language-codes';
+
+const slug = require('slug');
 
 const Ul = styled.ul`
   list-style-type: none;
@@ -212,13 +215,8 @@ class Index extends React.Component {
             <li key={topic.node.id}>
               <span>
                 <Link
-                  to={`/topic/${topic.node.id}${qs.stringify(
-                    {
-                      lang: qs.parse(location.search, {
-                        ignoreQueryPrefix: true,
-                      }).lang,
-                    },
-                    { addQueryPrefix: true },
+                  to={`${languageCodes[topic.node.node_locale]}/topic/${slug(
+                    topic.node.slug,
                   )}`}
                 >
                   {topic.node.title}
@@ -257,6 +255,8 @@ export const q = graphql`
           categories
           node_locale
           tags
+          slug
+          contentful_id
         }
       }
     }

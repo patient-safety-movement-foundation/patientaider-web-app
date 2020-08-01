@@ -10,6 +10,9 @@ import unified from 'unified';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
+import languageCodes from '../lib/language-codes';
+
+const slug = require('slug');
 
 const Wrapper = styled.div`
   width: 100%;
@@ -53,6 +56,21 @@ const Wrapper = styled.div`
   }
 `;
 
+function friendlyName(code) {
+  switch (code) {
+    case 'en-US':
+      return 'English';
+    case 'es-419':
+      return 'Spanish';
+    case 'zh-Hant-TW':
+      return 'Chinese';
+    case 'ar-SA':
+      return 'Arabic';
+    default:
+      return '';
+  }
+}
+
 class Topic extends React.Component {
   componentDidMount() {
     window.postMessage(
@@ -64,7 +82,7 @@ class Topic extends React.Component {
   }
 
   render() {
-    const { data, location, ...rest } = this.props;
+    const { data, location, pageContext, ...rest } = this.props;
     return (
       <Layout location={location} {...rest} showLanguages={false}>
         <Wrapper>
@@ -94,6 +112,19 @@ class Topic extends React.Component {
               }}
             />
           </div>
+          <div style={{ textAlign: 'center' }}>
+            <For each="translation" of={pageContext.translations}>
+              <small>
+                <a
+                  href={`/${
+                    languageCodes[translation.node.node_locale]
+                  }/topic/${slug(data.contentfulTopic.slug)}`}
+                >
+                  {friendlyName(translation.node.node_locale)}
+                </a>{' '}
+              </small>
+            </For>
+          </div>
         </Wrapper>
       </Layout>
     );
@@ -114,13 +145,19 @@ export const query = graphql`
           contentType
         }
       }
+      slug
     }
   }
 `;
 
+/* eslint-disable */
 Topic.propTypes = {
-  data: PropTypes.object.isRequired, // eslint-disable-line
-  location: PropTypes.object.isRequired, // eslint-disable-line
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.shape({
+    translations: PropTypes.string,
+  }),
 };
+/* eslint-enable */
 
 export default Topic;
