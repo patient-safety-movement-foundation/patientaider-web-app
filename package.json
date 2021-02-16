@@ -43,7 +43,7 @@
     "gatsby-source-filesystem": "^2.0.4",
     "gatsby-transformer-remark": "^2.1.9",
     "gatsby-transformer-sharp": "^2.1.4",
-    "marked": "^0.6.1",
+    "marked": "^0.7.0",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "qs": "^6.6.0",
