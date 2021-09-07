@@ -52,7 +52,7 @@
     "react-helmet": "^5.2.0",
     "react-inlinesvg": "^0.8.2",
     "remark-external-links": "^3.0.0",
-    "remark-html": "^8.0.0",
+    "remark-html": "^13.0.2",
     "remark-numbered-footnotes": "^1.0.8",
     "remark-parse": "^6.0.0",
     "slug": "^3.3.2",
