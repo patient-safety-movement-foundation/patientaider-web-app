@@ -41,7 +41,7 @@
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-source-contentful": "^2.2.6",
     "gatsby-source-filesystem": "^2.0.4",
-    "gatsby-transformer-remark": "^2.1.9",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.1.4",
     "marked": "^0.6.1",
     "normalize.css": "^8.0.0",
